@@ -1,0 +1,48 @@
+---
+title: "Shooting"
+author: "Jacob Turner"
+date: "October 28, 2018"
+output: word_document
+---
+
+```{r}
+#set working directory
+#setwd("C:\\Users\\Jacob Turner\\Dropbox\\HSU\\Prob\\Project")
+#setwd("G:\\My Drive\\HSU\\S18\\engr322\\Project")
+setwd("G:\\My Drive\\HSU\\current_Semester\\F18\\Comp3\\Shooting_meth")
+#G:\\My Drive\\HSU\\S18\\engr322\\Project
+#setwd("C:\\Users\\jdetu\\Dropbox\\HSU\\Prob\\Project")
+library("data.table")
+library("ggplot2")
+library("reshape2")
+#Other Libraries:
+#library("xlsx")
+#library("ggpubr")
+#library("Hmisc")
+#library("corrplot")
+```
+
+```{r}
+svals9 = fread("plotsvals9.csv")
+svals9
+svals5 = fread("plotsvals5.csv")
+svals5
+svals2 = fread("plotsvals2.csv")
+svals2
+#charge = fread("output_NEW_capacity.csv")
+#charge
+total = rbind(svals9,svals5,svals2)
+total
+
+```
+
+```{r}
+
+svals2
+ggplot(svals9, aes(svals9$`iteration`, y = svals9
+                   ))+
+  geom_point(aes(y = svals9$`S_value`, col = "0.9"))+
+  geom_point(aes(y = svals5$`S_value`, col = "0.5"))+
+  geom_point(aes(y = svals2$`S_value`, col = "0.2"))+
+  labs(x="Iteration", y = "S Value")
+```
